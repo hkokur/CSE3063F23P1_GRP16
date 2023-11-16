@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-
 public class SystemController {
     private Person loggedInUser;
     private ArrayList<Course> courses;
@@ -11,6 +10,7 @@ public class SystemController {
     private ArrayList<Student> students;
     private ArrayList<Advisor> advisors;
     private Json json;
+
     SystemController() {
         json = new Json();
         courses = json.getCourses();
@@ -88,29 +88,97 @@ public class SystemController {
         return courseList;
     }
 
-    public void printAvailableCourses(Student student, ArrayList<CourseSection> untakenCourses){
-        
+    public void printAvailableCourses(Student student, ArrayList<CourseSection> untakenCourses) {
+
         int courseOrder = 1;
-        for(int i = 0;i<courseSections.size();i++){
+        for (int i = 0; i < courseSections.size(); i++) {
             CourseSection courseSection = courseSections.get(i);
             ArrayList<Grade> studentCoursesTaken = student.getTranscript().getGradeList();
             int j = 0;
-            for(;j<studentCoursesTaken.size();j++){
-                if(studentCoursesTaken.get(j).getCourse().getFullName().equals(courseSection.getFullName())){
+            for (; j < studentCoursesTaken.size(); j++) {
+                if (studentCoursesTaken.get(j).getCourse().getFullName().equals(courseSection.getFullName())) {
                     break;
                 }
             }
-            if(j==studentCoursesTaken.size()){
-                
+            if (j == studentCoursesTaken.size()) {
+
                 untakenCourses.add(courseSections.get(i));
-                System.out.println(courseOrder+". "+courseSection.getFullName()+" "+courseSection.getSectionName()+" "+courseSection.getShortName());
+                System.out.println(courseOrder + ". " + courseSection.getFullName() + " "
+                        + courseSection.getSectionName() + " " + courseSection.getShortName());
                 courseOrder++;
             }
         }
     }
 
+    public ArrayList<CourseSection> getUntakenCourses(Student student) {
+        ArrayList<CourseSection> untakenCourses = new ArrayList<CourseSection>();
+        ArrayList<Grade> studentCoursesTaken = student.getTranscript().getGradeList();
+        for (int i = 0; i < courseSections.size(); i++) {
+            CourseSection courseSection = courseSections.get(i);
+            int j = 0;
+
+            // Checking if the student has taken the course before.
+            for (; j < studentCoursesTaken.size(); j++) {
+                if (studentCoursesTaken.get(j).getCourse().getFullName().equals(courseSection.getFullName())) {
+                    break;
+                }
+            }
+            // If the student has not taken the course before, it will be added to the list.
+            if (j == studentCoursesTaken.size()) {
+                untakenCourses.add(courseSections.get(i));
+            }
+        }
+        return untakenCourses;
+    }
+
+    // Checking if the student passed the prerequisite course.
+    public boolean canTakeCourse(Student student, CourseSection courseSection) {
+        ArrayList<Grade> grades = student.getTranscript().getGradeList();
+        String courseSectionShortName = courseSection.getShortName();
+
+        // Check if the student has taken CSE1241 for CSE1242 course. Computer
+        // programming 2 and computer programming 1
+        if (courseSectionShortName.equals("CSE1242")) {
+            // Check if the student has taken CSE1241
+            for (int i = 0; i < grades.size(); i++) {
+                if (grades.get(i).getCourse().getShortName().equals("CSE1241")
+                        && !grades.get(i).getGrade().equals("FF"))
+                    return true;
+            }
+
+            // Check if the student has taken MATH1001 for MATH2256 course. Linear algebra
+            // and calculus 2.
+        } else if (courseSectionShortName.equals("MATH2256")) {
+            // Check if the student has taken MATH1002
+            for (int i = 0; i < grades.size(); i++) {
+                if (grades.get(i).getCourse().getShortName().equals("MATH1002")
+                        && !grades.get(i).getGrade().equals("FF"))
+                    return true;
+
+            }
+        }
+
+        // Check if the student has taken CSE2225 for CSE2246 course. Analysis of
+        // algorithms and data structures
+        else if (courseSectionShortName.equals("CSE2246")) {
+            // Check if the student has taken CSE2225
+            for (int i = 0; i < grades.size(); i++) {
+                if (grades.get(i).getCourse().getShortName().equals("CSE2225")
+                        && !grades.get(i).getGrade().equals("FF"))
+                    return true;
+
+            }
+        }
+
+        else {
+            return true;
+        }
+
+        return false;
+    }
+
     // Applying the course operation
-    public void applyCourse(Student student, CourseSection courseSection){
+    public void applyCourse(Student student, CourseSection courseSection) {
         System.out.println(courseSection.getFullName());
         student.getCourses().add(courseSection);
         json.updateStudents();
@@ -118,7 +186,7 @@ public class SystemController {
 
     }
 
-    public boolean checkPrerequisite(){
+    public boolean checkPrerequisite() {
         return true;
     }
 
