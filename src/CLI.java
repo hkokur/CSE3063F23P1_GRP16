@@ -59,7 +59,7 @@ public class CLI {
         // int i = input.nextInt();
         // if (i == -1)
         // return;
-        // if (systemController.canTakeCourse(student, untakenCourses.get(i - 1))) {
+        // if (systemController.canTakeCourse(student, untakenCourses.get(i - 1))) {*e
         // systemController.applyCourse(student, untakenCourses.get(i - 1));
         // } else {
         // System.out.println("You can't take this course. You have to take the

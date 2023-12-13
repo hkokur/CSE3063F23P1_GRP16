@@ -12,7 +12,7 @@ public class Course {
     }
 
     public Course(String shortName, String fullName) {
-        this.shortName = shortName;
+        this.shortName = shortName;3
         this.fullName = fullName;
         this.description = "";
         this.prerequisite = "";
