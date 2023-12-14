@@ -107,6 +107,7 @@ public class Student extends Person {
 
     }
 
+
     // Function for checking if the student has already added the course.
     public boolean checkStudentAlreadyAddedTheCourse(Course course) {
         ArrayList<Course> courses = this.getSelectedCourses();
@@ -198,5 +199,19 @@ public class Student extends Person {
         }
         return availableCourses;
     }
+
+    public String getWarnings(int warningCount){
+        if(warningCount==1){
+            return "Maximum credit exceeded.";
+        }
+        return "";
+    }
+    public int getTotalCredit(){
+        int sum = 0;
+        for(int i = 0;i<courses.size();i++){
+            sum+=courses.get(i).getCredit();
+        }
+        return sum;
+    }   
 
 }

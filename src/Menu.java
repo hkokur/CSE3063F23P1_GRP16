@@ -51,8 +51,17 @@ public class Menu {
             ArrayList<Course> availableCourses = student.getAvailableCourses();
             for (int i = 0; i < availableCourses.size(); i++) {
                 Course course = availableCourses.get(i);
-                System.out.println(i + 1 + ". " + course.getFullName() + " " + course.getSectionName()
-                        + " " + course.getShortName());
+                if(course instanceof NonTechnicalElective)
+                    System.out.println(i + 1 + ". " + course.getFullName() + " " + ((NonTechnicalElective)course).getSectionName()
+                            + " " + course.getShortName());
+                
+                else if(course instanceof TechnicalElective)
+                    System.out.println(i + 1 + ". " + course.getFullName() + " " + ((TechnicalElective)course).getSectionName()
+                            + " " + course.getShortName());
+                
+                else
+                    System.out.println(i + 1 + ". " + course.getFullName() + " " + ((Mandatory)course).getSectionName()
+                            + " " + course.getShortName());
             }
 
             Scanner input = new Scanner(System.in);
@@ -78,7 +87,7 @@ public class Menu {
         }
 
         else if (selection == 4) {
-            ArrayList<CourseSection> coursesTaken = student.getCourses();
+            ArrayList<Course> coursesTaken = student.getSelectedCourses();
 
             for (int i = 0; i < coursesTaken.size(); i++) {
                 System.out.println(coursesTaken.get(i).getShortName() + " " + coursesTaken.get(i).getFullName() + " "
@@ -111,13 +120,20 @@ public class Menu {
             System.out.println(
                     "List of courses for student " + advisor.getStudents().get(studentSelection - 1).getFullName());
 
-            ArrayList<CourseSection> coursesOfStudent = advisor.getStudents().get(studentSelection - 1)
-                    .getCourses();
+            ArrayList<Course> coursesOfStudent = advisor.getStudents().get(studentSelection - 1).getSelectedCourses();
             for (int i = 0; i < coursesOfStudent.size(); i++) {
-                CourseSection courseSection = coursesOfStudent.get(i);
-                System.out.println(courseSection.getFullName() + " " +
-                        courseSection.getSectionName()
-                        + " " + courseSection.getShortName());
+                Course course = coursesOfStudent.get(i);
+                if(course instanceof NonTechnicalElective)
+                    System.out.println(i + 1 + ". " + course.getFullName() + " " + ((NonTechnicalElective)course).getSectionName()
+                            + " " + course.getShortName());
+                
+                else if(course instanceof TechnicalElective)
+                    System.out.println(i + 1 + ". " + course.getFullName() + " " + ((TechnicalElective)course).getSectionName()
+                            + " " + course.getShortName());
+                
+                else
+                    System.out.println(i + 1 + ". " + course.getFullName() + " " + ((Mandatory)course).getSectionName()
+                            + " " + course.getShortName());
             }
 
             System.out.println("1-Approve selections\n2-Reject selections");

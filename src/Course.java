@@ -1,45 +1,23 @@
 import java.util.ArrayList;
-<<<<<<< HEAD
-public class Course{
-=======
 
 public abstract class Course {
->>>>>>> 790229a2508f109a22cd42891e0c6e01c9851d1d
     private String shortName;
     private String fullName;
     private String description;
     private ArrayList<String> prerequisite;
-<<<<<<< HEAD
-
-    public Course(String shortName, String fullName, String description, ArrayList<String> prerequisite) {
-=======
     private int semester;
     private int credit;
     private int classHours;
 
     public Course(String shortName, String fullName, String description, ArrayList<String> prerequisite, int semester,
             int credit, int classHours) {
->>>>>>> 790229a2508f109a22cd42891e0c6e01c9851d1d
         this.shortName = shortName;
         this.fullName = fullName;
         this.description = description;
         this.prerequisite = prerequisite;
-<<<<<<< HEAD
-    }
-
-    public Course(String shortName, String fullName) {
-        this.shortName = shortName;
-        this.fullName = fullName;
-        this.description = "";
-        this.prerequisite = new ArrayList<>();
-    }
-
-    public Course() {
-=======
         this.semester = semester;
         this.credit = credit;
         this.classHours = classHours;
->>>>>>> 790229a2508f109a22cd42891e0c6e01c9851d1d
     }
 
     public String getShortName() {
@@ -70,13 +48,8 @@ public abstract class Course {
         return prerequisite;
     }
 
-<<<<<<< HEAD
-    public void setPrerequisite(ArrayList<String> prerequisite) {
-        this.prerequisite = prerequisite;
-=======
     public void setPrerequisite(ArrayList<String> prerequist) {
         this.prerequisite = prerequist;
->>>>>>> 790229a2508f109a22cd42891e0c6e01c9851d1d
 
     }
 

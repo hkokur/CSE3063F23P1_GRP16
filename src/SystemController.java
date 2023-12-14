@@ -122,13 +122,13 @@ public class SystemController {
     public void printLecturerStudents(Lecturer lecturer) {
         for (int i = 0; i < students.size(); i++) {
             List<Course> lecturerCourses = lecturer.getCourses();
-            for (int j = 0; j < students.get(i).getCourses().size(); j++) {
+            for (int j = 0; j < students.get(i).getSelectedCourses().size(); j++) {
                 for (int k = 0; k < lecturerCourses.size(); k++) {
                     System.out.println("Lecturer Course: " + lecturerCourses.get(k).getFullName());
-                    System.out.println("Student Course: " + students.get(i).getCourses().get(j).getFullName());
+                    System.out.println("Student Course: " + students.get(i).getSelectedCourses().get(j).getFullName());
                     if (lecturerCourses.get(k)
-                            .equals(students.get(i).getCourses().get(j))) {
-                        System.out.println(students.get(i).getCourses().get(k).getFullName());
+                            .equals(students.get(i).getSelectedCourses().get(j))) {
+                        System.out.println(students.get(i).getSelectedCourses().get(k).getFullName());
                     }
                 }
             }
@@ -142,97 +142,43 @@ public class SystemController {
     }
 
     public void printStudentCourses(Student student) {
-        ArrayList<CourseSection> studentCourses = student.getCourses();
+        ArrayList<Course> studentCourses = student.getSelectedCourses();
         for (int i = 0; i < studentCourses.size(); i++) {
-            System.out.println((i + 1) + ". " + studentCourses.get(i).getFullName() + " "
-                    + studentCourses.get(i).getSectionName());
+            Course course = studentCourses.get(i);
+            if(course instanceof NonTechnicalElective)
+                    System.out.println(i + 1 + ". " + course.getFullName() + " " + ((NonTechnicalElective)course).getSectionName()
+                            + " " + course.getShortName());
+                
+            else if(course instanceof TechnicalElective)
+                    System.out.println(i + 1 + ". " + course.getFullName() + " " + ((TechnicalElective)course).getSectionName()
+                            + " " + course.getShortName());
+                
+            else
+                    System.out.println(i + 1 + ". " + course.getFullName() + " " + ((Mandatory)course).getSectionName()
+                            + " " + course.getShortName());
 
         }
     }
 
-    public boolean isUntaken(Student student, CourseSection courseSection) {
-        ArrayList<Grade> studentCoursesTaken = student.getTranscript().getGradeList();
 
-        for(int i = 0;i<studentCoursesTaken.size();i++){
-            if(studentCoursesTaken.get(i).getCourse().getFullName().equals(courseSection.getFullName()))
-                return false;
-        }           
-       
-        return true;
-    }
-
-    // Checking if the student passed the prerequisite course.
-    public boolean canTakeCourse(Student student, CourseSection courseSection) {
-        ArrayList<Grade> grades = student.getTranscript().getGradeList();
-        String courseSectionShortName = courseSection.getShortName();
-
-        // Check if the student has taken CSE1241 for CSE1242 course. Computer
-        // programming 2 and computer programming 1
-        if (courseSectionShortName.equals("CSE1242")) {
-            // Check if the student has taken CSE1241
-            for (int i = 0; i < grades.size(); i++) {
-                if (grades.get(i).getCourse().getShortName().equals("CSE1241")
-                        && !grades.get(i).getGrade().equals("FF"))
-                    return true;
-            }
-
-            // Check if the student has taken MATH1001 for MATH2256 course. Linear algebra
-            // and calculus 2.
-        } else if (courseSectionShortName.equals("MATH2256")) {
-            // Check if the student has taken MATH1002
-            for (int i = 0; i < grades.size(); i++) {
-                if (grades.get(i).getCourse().getShortName().equals("MATH1002")
-                        && !grades.get(i).getGrade().equals("FF"))
-                    return true;
-
-            }
-        }
-
-        // Check if the student has taken CSE2225 for CSE2246 course. Analysis of
-        // algorithms and data structures
-        else if (courseSectionShortName.equals("CSE2246")) {
-            // Check if the student has taken CSE2225
-            for (int i = 0; i < grades.size(); i++) {
-                if (grades.get(i).getCourse().getShortName().equals("CSE2225")
-                        && !grades.get(i).getGrade().equals("FF"))
-                    return true;
-
-            }
-        }
-
-        else {
-            return true;
-        }
-
-        return false;
-    }
 
     // Applying the course operation
-    public void applyCourse(Student student, CourseSection courseSection) {
-        student.getCourses().add(courseSection);
-        json.updateStudents();
-        json.updateParametes();
+    public void applyCourse(Student student, Course course) {
+        student.getSelectedCourses().add(course);
+        json.writeStudents(students);
 
     }
 
     public void rejectCourse(Advisor advisor, int studentSelection) {
-        advisor.getStudents().get(studentSelection - 1).getCourses().clear();
-        json.updateStudents();
-        json.updateParametes();
+        advisor.getStudents().get(studentSelection - 1).getSelectedCourses().clear();
+        json.writeAdvisors(advisors);
     }
 
     public void approveCourse(Advisor advisor, int studentSelection) {
-        advisor.getStudents().get(studentSelection - 1).setApproved(true);
-        json.updateStudents();
-        json.updateParametes();
+        advisor.getStudents().get(studentSelection - 1).setStatus("Approved");
+        json.writeStudents(students);
     }
 
-
-    public void save() {
-        json.updateStudents();
-        json.updateParametes();
-
-    }
 
     // Accepting or rejecting the course application.
 
