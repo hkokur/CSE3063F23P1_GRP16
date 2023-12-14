@@ -101,4 +101,5 @@ public class Course {
                 + "\nCredit: " + this.credit + "\nClass Hours: " + this.classHours;
     };
 
+    // public abstract String getInfo();
 }
