@@ -12,11 +12,11 @@ public class SystemController {
 
     SystemController() {
         json = new Json();
-        courses = json.getCourses();
-        lecturers = json.getLecturers();
-        courseSections = json.getCourseSections();
-        students = json.getStudents();
-        advisors = json.getAdvisors();
+        courses = json.readCourses();
+        lecturers = json.readLecturers();
+        courseSections = json.readCourseSections();
+        students = json.readStudents();
+        advisors = json.readAdvisors();
 
     }
 
@@ -227,82 +227,6 @@ public class SystemController {
         json.updateParametes();
     }
 
-    public ArrayList<CourseSection> getAvailableCourses(Student student) {
-        ArrayList<CourseSection> availableCourses = new ArrayList<CourseSection>();
-
-        // From the course section list
-        for (int i = 0; i < courseSections.size(); i++) {
-            CourseSection courseSection = courseSections.get(i);
-            if (checkStudentAlreadyAddedTheCourse(student, courseSection) == false
-                    && checkPrerequisite(student, courseSection) == true
-                    && checkYear(student, courseSection) == true && isUntaken(student, courseSection)) {
-                availableCourses.add(courseSection);
-            }
-        }
-        return availableCourses;
-    }
-
-    // Function for checking if the student has already added the course.
-    public boolean checkStudentAlreadyAddedTheCourse(Student student, CourseSection courseSection) {
-        ArrayList<CourseSection> courses = student.getCourses();
-        for (int i = 0; i < courses.size(); i++) {
-            if (courses.get(i).getShortName().equals(courseSection.getShortName())) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    // If the student has taken the prerequisite course, it will return true.
-    public boolean checkPrerequisite(Student student, CourseSection courseSection) {
-        ArrayList<Grade> grades = student.getTranscript().getGradeList();
-        // If there are no prerequisites, return true.
-        if (courseSection.getPrerequisite().equals("")) {
-            return true;
-        }
-
-        // If there are prerequisites, check if the student has taken the prerequisite
-        // course.
-        else {
-            // Check if the student has taken the prerequisite course. If the student has
-            // taken the course, return true.
-            // If the student has not taken the course, return false.
-            // If the student has taken the course but failed, return false.
-            for (int i = 0; i < grades.size(); i++) {
-                if (grades.get(i).getCourse().getShortName().equals(courseSection.getPrerequisite())
-                        && !grades.get(i).getGrade().equals("FF")) {
-                    return true;
-                }
-            }
-            return false;
-        }
-    }
-
-    // Function for checking if the student's year is suitable for the course.
-    public boolean checkYear(Student student, CourseSection courseSection) {
-
-        String courseShortName = courseSection.getShortName();
-        int courseYear = parseYearFromShortName(courseShortName);
-
-        // If the student's year is suitable for the course, return true.
-        // If the student's year is not suitable for the course, return false.
-        if (student.getStudentYear() >= courseYear) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    // Function for parsing the year from the course short name.
-    public int parseYearFromShortName(String courseShortName) {
-        // Find first number in string
-        int i = 0;
-        while (!Character.isDigit(courseShortName.charAt(i))) {
-            i++;
-        }
-        // Return courseShortName.charAt(i) as an int
-        return Character.getNumericValue(courseShortName.charAt(i));
-    }
 
     public void save() {
         json.updateStudents();

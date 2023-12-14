@@ -48,11 +48,11 @@ public class Menu {
         Student student = (Student) systemController.getLoggedInUser();
         if (selection == 1) {
             System.out.println("AVAILABLE COURSES THAT STUDENT CAN TAKE");
-            ArrayList<CourseSection> availableCourses = systemController.getAvailableCourses(student);
+            ArrayList<Course> availableCourses = student.getAvailableCourses();
             for (int i = 0; i < availableCourses.size(); i++) {
-                CourseSection courseSection = availableCourses.get(i);
-                System.out.println(i + 1 + ". " + courseSection.getFullName() + " " + courseSection.getSectionName()
-                        + " " + courseSection.getShortName());
+                Course course = availableCourses.get(i);
+                System.out.println(i + 1 + ". " + course.getFullName() + " " + course.getSectionName()
+                        + " " + course.getShortName());
             }
 
             Scanner input = new Scanner(System.in);

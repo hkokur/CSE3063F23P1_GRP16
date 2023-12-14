@@ -1,10 +1,11 @@
-public class Course {
+import java.util.ArrayList;
+public class Course{
     private String shortName;
     private String fullName;
     private String description;
-    private String prerequisite;
+    private ArrayList<String> prerequisite;
 
-    public Course(String shortName, String fullName, String description, String prerequisite) {
+    public Course(String shortName, String fullName, String description, ArrayList<String> prerequisite) {
         this.shortName = shortName;
         this.fullName = fullName;
         this.description = description;
@@ -12,10 +13,10 @@ public class Course {
     }
 
     public Course(String shortName, String fullName) {
-        this.shortName = shortName;3
+        this.shortName = shortName;
         this.fullName = fullName;
         this.description = "";
-        this.prerequisite = "";
+        this.prerequisite = new ArrayList<>();
     }
 
     public Course() {
@@ -45,12 +46,12 @@ public class Course {
         this.description = description;
     }
 
-    public String getPrerequisite() {
+    public ArrayList<String> getPrerequisite() {
         return prerequisite;
     }
 
-    public void setPrerequisite(String prerequist) {
-        this.prerequisite = prerequist;
+    public void setPrerequisite(ArrayList<String> prerequisite) {
+        this.prerequisite = prerequisite;
 
     }
 
