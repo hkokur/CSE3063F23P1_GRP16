@@ -5,7 +5,6 @@ public class SystemController {
     private Person loggedInUser;
     private ArrayList<Course> courses;
     private ArrayList<Lecturer> lecturers;
-    private ArrayList<CourseSection> courseSections;
     private ArrayList<Student> students;
     private ArrayList<Advisor> advisors;
     private Json json;
@@ -14,7 +13,6 @@ public class SystemController {
         json = new Json();
         courses = json.readCourses();
         lecturers = json.readLecturers();
-        courseSections = json.readCourseSections();
         students = json.readStudents();
         advisors = json.readAdvisors();
 
@@ -32,8 +30,8 @@ public class SystemController {
         this.loggedInUser = loggedInUser;
     }
 
-    public ArrayList<CourseSection> getCourseSectionList() {
-        return courseSections;
+    public ArrayList<Course> getCourseList() {
+        return courses;
     }
 
     public ArrayList<Advisor> getAdvisorList() {
@@ -136,7 +134,7 @@ public class SystemController {
     }
 
     public void printLecturerStudentsGrades(Lecturer lecturer) {
-        for (int i = 0; i < courseSections.size(); i++) {
+        for (int i = 0; i < courses.size(); i++) {
 
         }
     }

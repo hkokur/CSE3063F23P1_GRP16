@@ -285,9 +285,9 @@ public class Json {
         writePretty();
     }
 
-    public ArrayList<CourseSection> readCourseSections() {
+    public ArrayList<Course> readCourseSections() {
         File file = getParametersFile();
-        ArrayList<CourseSection> courseSections = new ArrayList<CourseSection>();
+        ArrayList<Course> courses = new ArrayList<Course>();
         try (Scanner scanner = new Scanner(file, StandardCharsets.UTF_8.name())) {
             String content = scanner.useDelimiter("\\A").next();
             scanner.close();
@@ -297,30 +297,30 @@ public class Json {
             JsonArray jCourses = jObject.get("sections").getAsJsonArray();
             for (int i = 0; i < jCourses.size(); i++) {
                 Gson gson = new Gson();
-                CourseSection courseSection = gson.fromJson(jCourses.get(i), CourseSection.class);
-                courseSections.add(courseSection);
+                Course course = gson.fromJson(jCourses.get(i), Course.class);
+                courses.add(course);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return courseSections;
+        return courses;
     }
 
-    public void writeCourseSections(ArrayList<CourseSection> courseSections) {
+    public void writeCourseSections(ArrayList<Course> courses) {
         File file = getParametersFile();
         try (Scanner scanner = new Scanner(file, StandardCharsets.UTF_8.name())) {
             String content = scanner.useDelimiter("\\A").next();
             scanner.close();
-            String sCourseSections = "";
-            for (int i = 0; i < courseSections.size(); i++) {
-                CourseSection courseSection = courseSections.get(i);
+            String sCourses = "";
+            for (int i = 0; i < courses.size(); i++) {
+                Course course = courses.get(i);
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                sCourseSections += gson.toJson(courseSection, CourseSection.class);
-                if (i + 1 < courseSections.size())
-                    sCourseSections += ",\n";
+                sCourses += gson.toJson(courses, Course.class);
+                if (i + 1 < courses.size())
+                    sCourses += ",\n";
             }
-            sCourseSections = "[\n" + sCourseSections + "\n]";
-            String updatedString = updateValue("sections", sCourseSections, content);
+            sCourses = "[\n" + sCourses + "\n]";
+            String updatedString = updateValue("sections", sCourses, content);
             FileWriter writer = new FileWriter(file);
             writer.write(updatedString); // just an example how you can write a String to it
             writer.flush();
