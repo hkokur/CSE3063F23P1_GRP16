@@ -28,6 +28,10 @@ public class SystemController {
         return loggedInUser;
     }
 
+    public void setLoggedInUser(Person loggedInUser) {
+        this.loggedInUser = loggedInUser;
+    }
+
     public ArrayList<CourseSection> getCourseSectionList() {
         return courseSections;
     }
@@ -38,6 +42,10 @@ public class SystemController {
 
     public ArrayList<Lecturer> getLecturerList() {
         return lecturers;
+    }
+
+    public ArrayList<Course> getCourses() {
+        return courses;
     }
 
     public boolean Authenticate(String username, String password) {
@@ -133,25 +141,24 @@ public class SystemController {
         }
     }
 
-    public ArrayList<CourseSection> getUntakenCourses(Student student) {
-        ArrayList<CourseSection> untakenCourses = new ArrayList<CourseSection>();
-        ArrayList<Grade> studentCoursesTaken = student.getTranscript().getGradeList();
-        for (int i = 0; i < courseSections.size(); i++) {
-            CourseSection courseSection = courseSections.get(i);
-            int j = 0;
+    public void printStudentCourses(Student student) {
+        ArrayList<CourseSection> studentCourses = student.getCourses();
+        for (int i = 0; i < studentCourses.size(); i++) {
+            System.out.println((i + 1) + ". " + studentCourses.get(i).getFullName() + " "
+                    + studentCourses.get(i).getSectionName());
 
-            // Checking if the student has taken the course before.
-            for (; j < studentCoursesTaken.size(); j++) {
-                if (studentCoursesTaken.get(j).getCourse().getFullName().equals(courseSection.getFullName())) {
-                    break;
-                }
-            }
-            // If the student has not taken the course before, it will be added to the list.
-            if (j == studentCoursesTaken.size()) {
-                untakenCourses.add(courseSections.get(i));
-            }
         }
-        return untakenCourses;
+    }
+
+    public boolean isUntaken(Student student, CourseSection courseSection) {
+        ArrayList<Grade> studentCoursesTaken = student.getTranscript().getGradeList();
+
+        for(int i = 0;i<studentCoursesTaken.size();i++){
+            if(studentCoursesTaken.get(i).getCourse().getFullName().equals(courseSection.getFullName()))
+                return false;
+        }           
+       
+        return true;
     }
 
     // Checking if the student passed the prerequisite course.
@@ -202,11 +209,22 @@ public class SystemController {
 
     // Applying the course operation
     public void applyCourse(Student student, CourseSection courseSection) {
-        System.out.println(courseSection.getFullName());
         student.getCourses().add(courseSection);
         json.updateStudents();
         json.updateParametes();
 
+    }
+
+    public void rejectCourse(Advisor advisor, int studentSelection) {
+        advisor.getStudents().get(studentSelection - 1).getCourses().clear();
+        json.updateStudents();
+        json.updateParametes();
+    }
+
+    public void approveCourse(Advisor advisor, int studentSelection) {
+        advisor.getStudents().get(studentSelection - 1).setApproved(true);
+        json.updateStudents();
+        json.updateParametes();
     }
 
     public ArrayList<CourseSection> getAvailableCourses(Student student) {
@@ -217,7 +235,7 @@ public class SystemController {
             CourseSection courseSection = courseSections.get(i);
             if (checkStudentAlreadyAddedTheCourse(student, courseSection) == false
                     && checkPrerequisite(student, courseSection) == true
-                    && checkYear(student, courseSection) == true) {
+                    && checkYear(student, courseSection) == true && isUntaken(student, courseSection)) {
                 availableCourses.add(courseSection);
             }
         }

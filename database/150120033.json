@@ -1,141 +1,181 @@
 {
-    "name": "Hakkı",
-    "surname": "Kokur",
-    "username": "hakki",
-    "password": "hakkikokur",
-    "address": "Maltepe/Istanbul",
-    "phoneNumber": "5315274392",
-    "studentYear": 3,
-    "entranceYear": 2020,
-    "transcript": [
-        {
-            "shortName": "ATA121",
-            "fullName": "Atatürk İlkeleri ve İnkılap Tarihi I",
-            "description": "",
-            "grade": "BA"
+  "address": "Maltepe/Istanbul",
+  "phoneNumber": "5315274392",
+  "semester": 5,
+  "entranceYear": 2020,
+  "status": "",
+  "selectedCourses": [],
+  "transcript": {
+    "listGrades": [
+      {
+        "course": {
+          "shortName": "ATA121",
+          "fullName": "Atatürk İlkeleri ve İnkılap Tarihi I",
+          "description": "",
+          "semester": 1,
+          "credit": 2,
+          "classHours": 2
         },
-        {
-            "shortName": "CSE1200",
-            "fullName": "Introduction to Computer Engineering",
-            "description": "",
-            "grade": "CB"
+        "grade": "AA"
+      },
+      {
+        "course": {
+          "shortName": "MBG1201",
+          "fullName": "Introduction to Modern Biology",
+          "description": "",
+          "semester": 1,
+          "credit": 5,
+          "classHours": 3
         },
-        {
-            "shortName": "CSE1241",
-            "fullName": "Computer Programming I",
-            "description": "",
-            "grade": "BB"
+        "grade": "AA"
+      },
+      {
+        "course": {
+          "shortName": "CSE1200",
+          "fullName": "Introduction to Computer Engineering",
+          "description": "",
+          "semester": 1,
+          "credit": 4,
+          "classHours": 3
         },
-        {
-            "shortName": "MATH1001",
-            "fullName": "Calculus I",
-            "description": "",
-            "grade": "DD"
+        "grade": "AA"
+      },
+      {
+        "course": {
+          "shortName": "CSE1241",
+          "fullName": "Computer Programming I",
+          "description": "",
+          "semester": 1,
+          "credit": 6,
+          "classHours": 4
         },
-        {
-            "shortName": "MBG1201",
-            "fullName": "Introduction to Modern Biology",
-            "description": "",
-            "grade": "CC"
+        "grade": "AA"
+      },
+      {
+        "course": {
+          "shortName": "MATH1001",
+          "fullName": "Calculus I",
+          "description": "",
+          "semester": 1,
+          "credit": 6,
+          "classHours": 2
         },
-        {
-            "shortName": "PHYS1101",
-            "fullName": "Physics I",
-            "description": "",
-            "grade": "CB"
+        "grade": "AA"
+      },
+      {
+        "course": {
+          "shortName": "PHYS1001",
+          "fullName": "Physics I",
+          "description": "",
+          "semester": 1,
+          "credit": 4,
+          "classHours": 2
         },
-        {
-            "shortName": "PHYS1103",
-            "fullName": "Physics Lab I",
-            "description": "",
-            "grade": "BB"
+        "grade": "AA"
+      },
+      {
+        "course": {
+          "shortName": "PHYS1003",
+          "fullName": "Physics Lab I",
+          "description": "",
+          "semester": 1,
+          "credit": 2,
+          "classHours": 2
         },
-        {
-            "shortName": "TRD121",
-            "fullName": "Türk Dili I",
-            "description": "",
-            "grade": "BB"
+        "grade": "AA"
+      },
+      {
+        "course": {
+          "shortName": "TRD121",
+          "fullName": "Türk Dili I",
+          "description": "",
+          "semester": 1,
+          "credit": 2,
+          "classHours": 2
         },
-        {
-            "shortName": "ATA122",
-            "fullName": "Atatürk İlkeleri ve İnkılap Tarihi II",
-            "description": "",
-            "grade": "BA"
+        "grade": "AA"
+      },
+      {
+        "course": {
+          "shortName": "ATA122",
+          "fullName": "Atatürk İlkeleri ve İnkılap Tarihi II",
+          "description": "",
+          "semester": 2,
+          "credit": 2,
+          "classHours": 2
         },
-        {
-            "shortName": "CSE1242",
-            "fullName": "Computer Programming II",
-            "description": "",
-            "grade": "CB"
+        "grade": "AA"
+      },
+      {
+        "course": {
+          "shortName": "CSE1241",
+          "fullName": "Computer Programming II",
+          "description": "",
+          "semester": 2,
+          "credit": 6,
+          "classHours": 4
         },
-        {
-            "shortName": "MATH1002",
-            "fullName": "Calculus II",
-            "description": "",
-            "grade": "DD"
+        "grade": "AA"
+      },
+      {
+        "course": {
+          "shortName": "MATH1002",
+          "fullName": "Calculus II",
+          "description": "",
+          "semester": 2,
+          "credit": 6,
+          "classHours": 2
         },
-        {
-            "shortName": "MATH2256",
-            "fullName": "Linear Algebra for Computer Engineering",
-            "description": "",
-            "grade": "DC"
+        "grade": "AA"
+      },
+      {
+        "course": {
+          "shortName": "MATH2256",
+          "fullName": "Linear Algebra for Computer Engineering",
+          "description": "",
+          "semester": 2,
+          "credit": 5,
+          "classHours": 3
         },
-        {
-            "shortName": "PHYS1102",
-            "fullName": "Physics II",
-            "description": "",
-            "grade": "CB"
+        "grade": "AA"
+      },
+      {
+        "course": {
+          "shortName": "PHYS1002",
+          "fullName": "Physics II",
+          "description": "",
+          "semester": 2,
+          "credit": 4,
+          "classHours": 2
         },
-        {
-            "shortName": "PHYS1104",
-            "fullName": "Physics Lab II",
-            "description": "",
-            "grade": "CB"
+        "grade": "AA"
+      },
+      {
+        "course": {
+          "shortName": "PHYS1004",
+          "fullName": "Physics Lab II",
+          "description": "",
+          "semester": 2,
+          "credit": 2,
+          "classHours": 2
         },
-        {
-            "shortName": "TRD122",
-            "fullName": "Türk Dili II",
-            "description": "",
-            "grade": "AA"
-        }
-    ],
-    "isApproved": "false",
-    "courses": [
-        {
-            "shortName": "CSE3033",
-            "sectionName": "1.1",
-            "lecturerUsername": "mustafa",
-            "quota": "100",
-            "dates": [
-                {
-                    "startTime": "8:30",
-                    "endTime": "9:20",
-                    "dayOfWeek": "Monday, Friday"
-                },
-                {
-                    "startTime": "11:30",
-                    "endTime": "12:20",
-                    "dayOfWeek": "Tuesday"
-                }
-            ]
+        "grade": "AA"
+      },
+      {
+        "course": {
+          "shortName": "TRD122",
+          "fullName": "Türk Dili II",
+          "description": "",
+          "semester": 2,
+          "credit": 2,
+          "classHours": 2
         },
-        {
-            "shortName": "CSE3055",
-            "sectionName": "1.1",
-            "lecturerUsername": "muratcan",
-            "quota": "100",
-            "dates": [
-                {
-                    "startTime": "8:30",
-                    "endTime": "9:20",
-                    "dayOfWeek": "Monday, Friday"
-                },
-                {
-                    "startTime": "11:30",
-                    "endTime": "12:20",
-                    "dayOfWeek": "T"
-                }
-            ]
-        }
+        "grade": "AA"
+      }
     ]
+  },
+  "personName": "Hakkı",
+  "personSurname": "Kokur",
+  "username": "hakki",
+  "password": "hakkikokur"
 }
