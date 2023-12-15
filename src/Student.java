@@ -121,9 +121,11 @@ public class Student extends Person {
      public boolean checkPrerequisite(Course course) {
         ArrayList<Grade> grades = this.getTranscript().getGradeList();
         // If there are no prerequisites, return true.
-        
-        if(course.getPrerequisite()==null)
+
+        if (course.getPrerequisite()==null) {
             return true;
+        }
+        
         if (course.getPrerequisite().size()==0) {
             return true;
         }
@@ -131,18 +133,21 @@ public class Student extends Person {
         // If there are prerequisites, check if the student has taken the prerequisite
         // course.
         else {
+
             // Check if the student has taken the prerequisite course. If the student has
             // taken the course, return true.
             // If the student has not taken the course, return false.
             // If the student has taken the course but failed, return false.
             for (int i = 0; i < grades.size(); i++) {
                 ArrayList<String> prerequisites = course.getPrerequisite();
+                int prerequisite_count=0;
                 for(int j = 0;j<prerequisites.size();j++){
                     if (grades.get(i).getCourse().getShortName().equals(prerequisites.get(j))
-                        && !grades.get(i).getGrade().equals("FF")) {
-                        return true;
-                    }
+                        && !grades.get(i).getGrade().equals("FF")) 
+                        prerequisite_count++;
                 }
+                if(prerequisite_count==prerequisites.size())
+                    return true;
             }
             return false;
         }

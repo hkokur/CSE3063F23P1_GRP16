@@ -4,7 +4,7 @@ public class Course {
     private String shortName;
     private String fullName;
     private String description;
-    private ArrayList<String> prerequisite = new ArrayList<>();
+    private ArrayList<String> prerequisite = new ArrayList<String>();
     private int semester;
     private int credit;
     private int classHours;
@@ -47,7 +47,7 @@ public class Course {
     }
 
     public ArrayList<String> getPrerequisite() {
-        return prerequisite;
+        return this.prerequisite;
     }
 
     public void setPrerequisite(ArrayList<String> prerequist) {
