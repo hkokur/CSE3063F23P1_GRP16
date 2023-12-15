@@ -143,16 +143,16 @@ public class SystemController {
         ArrayList<Course> studentCourses = student.getSelectedCourses();
         for (int i = 0; i < studentCourses.size(); i++) {
             Course course = studentCourses.get(i);
-            if(course instanceof NonTechnicalElective)
-                    System.out.println(i + 1 + ". " + course.getFullName() + " " + ((NonTechnicalElective)course).getSectionName()
+            if(course instanceof NonTechnicalElectiveCourse)
+                    System.out.println(i + 1 + ". " + course.getFullName() + " " + ((NonTechnicalElectiveCourse)course).getSectionName()
                             + " " + course.getShortName());
                 
-            else if(course instanceof TechnicalElective)
-                    System.out.println(i + 1 + ". " + course.getFullName() + " " + ((TechnicalElective)course).getSectionName()
+            else if(course instanceof TechnicalElectiveCourse)
+                    System.out.println(i + 1 + ". " + course.getFullName() + " " + ((TechnicalElectiveCourse)course).getSectionName()
                             + " " + course.getShortName());
                 
             else
-                    System.out.println(i + 1 + ". " + course.getFullName() + " " + ((Mandatory)course).getSectionName()
+                    System.out.println(i + 1 + ". " + course.getFullName() + " " + ((MandatoryCourse)course).getSectionName()
                             + " " + course.getShortName());
 
         }

@@ -47,6 +47,35 @@ public class Advisor extends Staff {
         availableCourses.addAll(student.getSelectedCourses());
         return availableCourses;
     }
+
+    public void printCombinedCourses(ArrayList<Course> courses){
+        for(int i = 0;i<courses.size();i++){
+            System.out.println((i+1)+" "+courses.get(i).getFullName());
+        }
+    }
+    public void studentCourseOrganization(){
+        Scanner input = new Scanner(System.in);
+        int num = 0;
+        for(int i = 0;i<students.size();i++){
+            System.out.println("Eligible Students");
+            System.out.println("Please select one of them");
+            System.out.println((i+1)+" "+students.get(i).getFullName());
+
+        }
+        num = input.nextInt();
+        Student student = students.get(num-1);
+        ArrayList<Course> combinedCourseList = getCombinedCourses(student);
+        printCombinedCourses(combinedCourseList);
+        int selection = input.nextInt();
+        Course chosenCourse = combinedCourseList.get(selection-1);
+        if(student.getSelectedCourses().contains(chosenCourse)){
+            student.getSelectedCourses().remove(chosenCourse);
+        }
+        else{
+            student.getSelectedCourses().add(chosenCourse);
+        }
+        input.close();
+    }
     public boolean approveStudent(Student student){
         
         ArrayList<Course> selectedCourses = student.getSelectedCourses();
@@ -94,7 +123,7 @@ public class Advisor extends Staff {
         }
         for(int i = 0;i<selectedCourses.size();i++){
             
-            System.out.println("Do you approve the course")
+            System.out.println("Do you approve the course");
         }
         return true;
     }

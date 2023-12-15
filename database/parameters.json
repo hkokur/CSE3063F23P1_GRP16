@@ -1086,7 +1086,7 @@
         {
           "address": "Maltepe/Istanbul",
           "phoneNumber": "5315274392",
-          "semester": 5,
+          "semester": 0,
           "entranceYear": 2020,
           "status": "",
           "selectedCourses": [],
@@ -1267,7 +1267,7 @@
         {
           "address": "Kartal/Istanbul",
           "phoneNumber": "5312347654",
-          "semester": 5,
+          "semester": 0,
           "entranceYear": 2021,
           "status": "",
           "selectedCourses": [],
@@ -1448,7 +1448,7 @@
         {
           "address": "Tuzla/Istanbul",
           "phoneNumber": "5345274592",
-          "semester": 5,
+          "semester": 0,
           "entranceYear": 2021,
           "status": "",
           "selectedCourses": [],
@@ -1652,7 +1652,7 @@
         {
           "address": "Bostancı/Istanbul",
           "phoneNumber": "5365544592",
-          "semester": 5,
+          "semester": 0,
           "entranceYear": 2021,
           "status": "",
           "selectedCourses": [],
@@ -1833,7 +1833,7 @@
         {
           "address": "Ataşehir/Istanbul",
           "phoneNumber": "5305244392",
-          "semester": 5,
+          "semester": 0,
           "entranceYear": 2021,
           "status": "",
           "selectedCourses": [],
@@ -2014,7 +2014,7 @@
         {
           "address": "Üsküdar/Istanbul",
           "phoneNumber": "5375344792",
-          "semester": 5,
+          "semester": 0,
           "entranceYear": 2021,
           "status": "",
           "selectedCourses": [],

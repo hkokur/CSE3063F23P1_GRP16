@@ -4,7 +4,7 @@ public class Course {
     private String shortName;
     private String fullName;
     private String description;
-    private ArrayList<String> prerequisite;
+    private ArrayList<String> prerequisite = new ArrayList<>(1);; 
     private int semester;
     private int credit;
     private int classHours;
@@ -14,7 +14,8 @@ public class Course {
         this.shortName = shortName;
         this.fullName = fullName;
         this.description = description;
-        this.prerequisite = prerequisite;
+        if(prerequisite!=null)
+            this.prerequisite = prerequisite;
         this.semester = semester;
         this.credit = credit;
         this.classHours = classHours;

@@ -198,6 +198,7 @@ public class Student extends Person {
         return availableCourses;
     }
 
+    // It can be enriched upon the options.
     public String getWarnings(int warningCount){
         if(warningCount==1){
             return "Maximum credit exceeded.";
@@ -210,6 +211,16 @@ public class Student extends Person {
             sum+=selectedCourses.get(i).getCredit();
         }
         return sum;
-    }   
+    }  
+
+    public boolean dropCourse(Course course){
+        for(int i = 0;i<this.getSelectedCourses().size();i++){
+            if(this.getSelectedCourses().get(i).getShortName().equals(course.getShortName())){
+                this.getSelectedCourses().remove(course);
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
