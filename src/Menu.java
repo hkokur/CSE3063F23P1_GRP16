@@ -59,7 +59,7 @@ public class Menu {
                     System.out.println(i + 1 + ". " + course.getFullName() + " " + ((TechnicalElectiveCourse)course).getSectionName()
                             + " " + course.getShortName());
                 
-                else
+                else if(course instanceof MandatoryCourse)
                     System.out.println(i + 1 + ". " + course.getFullName() + " " + ((MandatoryCourse)course).getSectionName()
                             + " " + course.getShortName());
             }

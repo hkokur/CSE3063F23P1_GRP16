@@ -121,6 +121,9 @@ public class Student extends Person {
      public boolean checkPrerequisite(Course course) {
         ArrayList<Grade> grades = this.getTranscript().getGradeList();
         // If there are no prerequisites, return true.
+        
+        if(course.getPrerequisite()==null)
+            return true;
         if (course.getPrerequisite().size()==0) {
             return true;
         }
