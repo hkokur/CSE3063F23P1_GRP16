@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class CLI {
 
-    public static void main(String[] args) {
+    public static void main2(String[] args) {
         Json json = new Json();
         ArrayList<Student> students = json.readStudents();
         Student student = students.get(1);
@@ -53,7 +53,7 @@ public class CLI {
         // System.out.println(student.checkStudentPassedCourse(student.getAllCourses().get(5)));
     }
 
-    public static void main2(String[] args) {
+    public static void main(String[] args) {
         // Create a new system controller with null logged in user
         SystemController systemController = new SystemController();
         Menu menu = new Menu();

@@ -4,7 +4,19 @@
   "semester": 0,
   "entranceYear": 2021,
   "status": "",
-  "selectedCourses": [],
+  "selectedCourses": [
+    {
+      "shortName": "MATH2059",
+      "fullName": "Numerical Methods",
+      "description": "",
+      "prerequisite": [
+        "MATH1001"
+      ],
+      "semester": 3,
+      "credit": 4,
+      "classHours": 3
+    }
+  ],
   "transcript": {
     "listGrades": [
       {
@@ -172,7 +184,8 @@
         },
         "grade": "AA"
       }
-    ]
+    ],
+    "notes": ""
   },
   "personName": "Barış Giray",
   "personSurname": "Akman",
