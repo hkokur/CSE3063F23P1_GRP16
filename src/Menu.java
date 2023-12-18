@@ -2,11 +2,50 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
-
-    Scanner scanner = new Scanner(System.in);
-
+    
+    private Person loggedInUser;
+    private Json json = new Json();
+    private ArrayList<Course> courses = json.readCourses();
+    private ArrayList<Lecturer> lecturers = json.readLecturers();
+    private ArrayList<Student> students = json.readStudents();
+    private ArrayList<Advisor> advisors = json.readAdvisors();
     SystemController systemController = new SystemController();
     String_Constants StringConstants = new String_Constants();
+    Scanner scanner = new Scanner(System.in);
+
+    public Person getLoggedInUser() {
+        return loggedInUser;
+    }
+
+    public void setLoggedInUser(Person loggedInUser) {
+        this.loggedInUser = loggedInUser;
+    }
+
+
+    public boolean Authenticate(String username, String password) {
+        // Check if username and password are correct
+        // If correct, set loggedInUser to the correct user
+        // If incorrect, throw an error
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).getUsername().equals(username) && students.get(i).getPassword().equals(password)) {
+                this.loggedInUser = students.get(i);
+            }
+        }
+        for (int i = 0; i < lecturers.size(); i++) {
+            if (lecturers.get(i).getUsername().equals(username) && lecturers.get(i).getPassword().equals(password)) {
+                this.loggedInUser = lecturers.get(i);
+            }
+        }
+        for (int i = 0; i < advisors.size(); i++) {
+            if (advisors.get(i).getUsername().equals(username) && advisors.get(i).getPassword().equals(password)) {
+                this.loggedInUser = advisors.get(i);
+            }
+        }
+        if (this.loggedInUser == null) {
+            return false;
+        }
+        return true;
+    }
 
     public void Menu() {
         Scanner loginScanner = new Scanner(System.in);
@@ -19,7 +58,7 @@ public class Menu {
             String password = loginScanner.nextLine();
             // If the username and password are correct, authenticate the user and set the
             // logged in user
-            boolean isLogged = systemController.Authenticate(username, password);
+            boolean isLogged = Authenticate(username, password);
             if (isLogged) {
                 System.out.println(StringConstants.LOGIN_SUCCESSFUL_MESSAGE);
             } else {
@@ -31,36 +70,23 @@ public class Menu {
         // System.out.println(systemController.getMenu());
         // int selection = scanner.nextInt();
 
-        if (systemController.getLoggedInUser() instanceof Student) {
+        if (getLoggedInUser() instanceof Student) {
             studentMenu();
-        } else if (systemController.getLoggedInUser() instanceof Advisor) {
+        } else if (getLoggedInUser()instanceof Advisor) {
             advisorMenu();
-        } else if (systemController.getLoggedInUser() instanceof Lecturer) {
+        } else if (getLoggedInUser() instanceof Lecturer) {
             lecturerMenu();
         }
 
     }
 
     public void studentMenu() {
+        Student student = (Student) getLoggedInUser();
+        StudentController studentController = new StudentController(student);
         System.out.println(systemController.getMenu());
         int selection = scanner.nextInt();
-
-        Student student = (Student) systemController.getLoggedInUser();
         if (selection == 1) {
-            System.out.println("AVAILABLE COURSES THAT STUDENT CAN TAKE");
-            ArrayList<CourseSection> availableCourses = systemController.getAvailableCourses(student);
-            for (int i = 0; i < availableCourses.size(); i++) {
-                CourseSection courseSection = availableCourses.get(i);
-                System.out.println(i + 1 + ". " + courseSection.getFullName() + " " + courseSection.getSectionName()
-                        + " " + courseSection.getShortName());
-            }
-
-            Scanner input = new Scanner(System.in);
-            System.out.println("You are able to choose one of the courses above.");
-            System.out.print(
-                    "Please select the course you want to take(Enter -1 if you don't want to choose any course): ");
-
-            int i = input.nextInt();
+            studentController.CourseAdding();
             if (i == -1)
                 studentMenu();
             else {
@@ -70,20 +96,14 @@ public class Menu {
                     System.out.println(StringConstants.INVALID_OPTION_MESSAGE);
                 }
             }
-
         } else if (selection == 2) {
-            student.printTranscriptInfo();
+            studentController.showTranscript();
         } else if (selection == 3) {
             systemController.setLoggedInUser(null);
         }
 
         else if (selection == 4) {
-            ArrayList<CourseSection> coursesTaken = student.getCourses();
-
-            for (int i = 0; i < coursesTaken.size(); i++) {
-                System.out.println(coursesTaken.get(i).getShortName() + " " + coursesTaken.get(i).getFullName() + " "
-                        + coursesTaken.get(i).getShortName());
-            }
+            studentController.showSelectedCourses();
         }
 
         if (systemController.getLoggedInUser() == null) {

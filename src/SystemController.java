@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SystemController {
-    private Person loggedInUser;
     private ArrayList<Course> courses;
     private ArrayList<Lecturer> lecturers;
     private ArrayList<Student> students;

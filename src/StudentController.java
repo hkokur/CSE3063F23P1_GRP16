@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StudentController {
-
+    private Person loggedInUser;
     Student student;
 
     public StudentController(Student student) {
@@ -13,6 +13,9 @@ public class StudentController {
         this.student = new Student();
     }
 
+    // Waiting, pending status control
+    // Check the UML methods
+    // Consider the constraints
     public void CourseAdding() {
         showAvailableCourses();
 
@@ -31,6 +34,7 @@ public class StudentController {
         for (int i = 0; i < selectedCourses.size(); i++) {
             student.addCourse(courses.get(selectedCourses.get(i) - 1));
         }
+        student.setStatus("Pending");
     }
 
     public void CourseDropping() {
