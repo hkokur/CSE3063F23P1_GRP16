@@ -101,8 +101,8 @@ public class Student extends Person {
         this.transcript = transcript;
     }
 
-    public void addCourse(Course course){
-        this.selectedCourses.add(course);
+    public boolean addCourse(Course course){
+        return this.selectedCourses.add(course);
 
     }
 
@@ -197,9 +197,9 @@ public class Student extends Person {
         // From the course section list
         for (int i = 0; i < courses.size(); i++) {
             Course course = courses.get(i);
-            if (checkStudentAlreadyAddedTheCourse(course) == false
-                    && checkPrerequisite(course) == true
-                    && checkYear(course) == true && isUntaken(course)) {
+            if (!checkStudentAlreadyAddedTheCourse(course)
+                    && checkPrerequisite(course)
+                    && checkYear(course) && isUntaken(course)) {
                 availableCourses.add(course);
             }
         }
