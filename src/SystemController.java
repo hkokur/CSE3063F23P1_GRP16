@@ -107,7 +107,7 @@ public class SystemController {
 
     public void printLecturerCourses(Lecturer lecturer) {
         for (int i = 0; i < courses.size(); i++) {
-            List<Course> lecturerCourses = lecturer.getCourses();
+            List<Course> lecturerCourses = lecturer.getLecturedCourses();
             int j = 0;
             for (; j < lecturerCourses.size(); j++) {
                 if (lecturerCourses.get(j).getShortName().equals(courses.get(i).getShortName())) {
@@ -119,7 +119,7 @@ public class SystemController {
 
     public void printLecturerStudents(Lecturer lecturer) {
         for (int i = 0; i < students.size(); i++) {
-            List<Course> lecturerCourses = lecturer.getCourses();
+            List<Course> lecturerCourses = lecturer.getLecturedCourses();
             for (int j = 0; j < students.get(i).getSelectedCourses().size(); j++) {
                 for (int k = 0; k < lecturerCourses.size(); k++) {
                     System.out.println("Lecturer Course: " + lecturerCourses.get(k).getFullName());
