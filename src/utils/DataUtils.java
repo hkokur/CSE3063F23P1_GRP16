@@ -1,3 +1,4 @@
+package utils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -7,6 +8,14 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 
+import models.Advisor;
+import models.Course;
+import models.Lecturer;
+import models.MandatoryCourse;
+import models.NonTechnicalElectiveCourse;
+import models.Student;
+import models.TechnicalElectiveCourse;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -14,7 +23,52 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileWriter;
 
-public class Json {
+public class DataUtils {
+
+    // For singleton pattern
+    ArrayList<Student> students;
+    ArrayList<Course> courses;
+    ArrayList<Lecturer> lecturers;
+    ArrayList<Advisor> advisors;
+    ArrayList<MandatoryCourse> mandatories;
+    ArrayList<TechnicalElectiveCourse> technicalElectives;
+    ArrayList<NonTechnicalElectiveCourse> nonTechnicalElectives;
+
+    DataUtils() {
+
+    }
+
+    DataUtils(int number) {
+        students = readStudents();
+        courses = readCourses();
+        lecturers = readLecturers();
+        advisors = readAdvisors();
+        mandatories = readMandatoryCourses();
+        technicalElectives = readTechnicalElectiveCourse();
+        nonTechnicalElectives = readNonTechnicalElectiveCourses();
+    }
+
+    public void save() {
+        writeStudents(students);
+        writeCourses(courses);
+        writeLecturers(lecturers);
+        writeAdvisors(advisors);
+        writeMandatoryCourses(mandatories);
+        writeTechnicalElectiveCourse(technicalElectives);
+        writeNonTechnicalElectiveCourse(nonTechnicalElectives);
+    }
+
+    // end singleton pattern
+
+    private static DataUtils databaseInstance = null;
+
+    public static synchronized DataUtils getInstance() {
+        if (databaseInstance == null)
+            databaseInstance = new DataUtils(0);
+
+        return databaseInstance;
+    }
+
     private String databaseFolder = "database";
 
     private ArrayList<File> getStudentFiles() {

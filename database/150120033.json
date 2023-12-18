@@ -1,7 +1,7 @@
 {
   "address": "Maltepe/Istanbul",
   "phoneNumber": "5315274392",
-  "semester": 0,
+  "semester": 5,
   "entranceYear": 2020,
   "status": "",
   "selectedCourses": [],
@@ -108,7 +108,7 @@
       },
       {
         "course": {
-          "shortName": "CSE1241",
+          "shortName": "CSE1242",
           "fullName": "Computer Programming II",
           "description": "",
           "semester": 2,

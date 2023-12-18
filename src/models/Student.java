@@ -1,4 +1,8 @@
+package models;
+
 import java.util.ArrayList;
+
+import utils.DataUtils;
 
 public class Student extends Person {
     private String address;
@@ -92,6 +96,9 @@ public class Student extends Person {
     public boolean addCourse(Course course) {
         try {
             selectedCourses.add(course);
+
+            DataUtils database = DataUtils.getInstance();
+            database.writeStudents(menus.Menu.students);
             return true;
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
@@ -139,10 +146,10 @@ public class Student extends Person {
     public ArrayList<Course> getAllCourses() {
         ArrayList<Course> allCourses = new ArrayList<Course>();
 
-        Json json = new Json();
-        allCourses.addAll(json.readMandatoryCourses());
-        allCourses.addAll(json.readTechnicalElectiveCourse());
-        allCourses.addAll(json.readNonTechnicalElectiveCourses());
+        DataUtils dataUtils = DataUtils.getInstance();
+        allCourses.addAll(dataUtils.readMandatoryCourses());
+        allCourses.addAll(dataUtils.readTechnicalElectiveCourse());
+        allCourses.addAll(dataUtils.readNonTechnicalElectiveCourses());
 
         return allCourses;
     }

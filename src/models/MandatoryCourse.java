@@ -1,4 +1,8 @@
+package models;
+
 import java.util.ArrayList;
+
+import interfaces.SectionInterface;
 
 public class MandatoryCourse extends Course implements SectionInterface {
     private ArrayList<TimeInterval> dates;
@@ -8,7 +12,8 @@ public class MandatoryCourse extends Course implements SectionInterface {
     private String location;
     private int labHours;
 
-    MandatoryCourse(Course course, ArrayList<TimeInterval> dates, String sectionName, Lecturer lecturer, int quota,
+    public MandatoryCourse(Course course, ArrayList<TimeInterval> dates, String sectionName, Lecturer lecturer,
+            int quota,
             String location, int labHours) {
         super(course.getShortName(), course.getFullName(), course.getDescription(), course.getPrerequisite(),
                 course.getSemester(), course.getCredit(), course.getClassHours());
@@ -21,7 +26,8 @@ public class MandatoryCourse extends Course implements SectionInterface {
 
     }
 
-    MandatoryCourse(String shortName, String fullName, String description, ArrayList<String> prerequisite, int semester,
+    public MandatoryCourse(String shortName, String fullName, String description, ArrayList<String> prerequisite,
+            int semester,
             int credit, int classHours, ArrayList<TimeInterval> dates, String sectionName, Lecturer lecturer,
             int quota, String location, int labHours) {
         super(shortName, fullName, description, prerequisite, semester, credit, classHours);

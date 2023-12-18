@@ -73,7 +73,7 @@
       "classHours": 2
     },
     {
-      "shortName": "CSE1241",
+      "shortName": "CSE1242",
       "fullName": "Computer Programming II",
       "description": "",
       "semester": 2,
@@ -428,14 +428,6 @@
       "semester": 1,
       "credit": 2,
       "classHours": 2
-    },
-    {
-      "shortName": "YDA1001",
-      "fullName": "German for Beginners",
-      "description": "",
-      "semester": 1,
-      "credit": 2,
-      "classHours": 2
     }
   ],
   "mandatories": [
@@ -454,7 +446,6 @@
       ],
       "sectionName": "1.1",
       "lecturer": {
-        "courses": [],
         "reputation": "Dr.Öğr.",
         "officeHours": [
           {
@@ -500,7 +491,6 @@
       ],
       "sectionName": "1.1",
       "lecturer": {
-        "courses": [],
         "reputation": "Doç. Dr.",
         "officeHours": [
           {
@@ -546,7 +536,6 @@
       ],
       "sectionName": "1.1",
       "lecturer": {
-        "courses": [],
         "reputation": "Doç. Dr.",
         "officeHours": [
           {
@@ -595,7 +584,6 @@
       ],
       "sectionName": "1.1",
       "lecturer": {
-        "courses": [],
         "reputation": "Dr.Öğr.",
         "officeHours": [
           {
@@ -644,7 +632,6 @@
       ],
       "sectionName": "1.1",
       "lecturer": {
-        "courses": [],
         "reputation": "Doç. Dr.",
         "officeHours": [
           {
@@ -694,7 +681,6 @@
       ],
       "sectionName": "1.1",
       "lecturer": {
-        "courses": [],
         "reputation": "Doç. Dr.",
         "officeHours": [
           {
@@ -743,7 +729,6 @@
       ],
       "sectionName": "1.1",
       "lecturer": {
-        "courses": [],
         "reputation": "Dr.Öğr.",
         "officeHours": [
           {
@@ -792,7 +777,6 @@
       ],
       "sectionName": "1.1",
       "lecturer": {
-        "courses": [],
         "reputation": "Doç. Dr.",
         "officeHours": [
           {
@@ -838,7 +822,6 @@
       ],
       "sectionName": "1.1",
       "lecturer": {
-        "courses": [],
         "reputation": "Doç. Dr.",
         "officeHours": [
           {
@@ -868,6 +851,51 @@
       "semester": 7,
       "credit": 5,
       "classHours": 4
+    },
+    {
+      "dates": [
+        {
+          "startTime": "11:30",
+          "endTime": "12:20",
+          "dayOfWeek": "Wednesday"
+        },
+        {
+          "startTime": "13:00",
+          "endTime": "13:50",
+          "dayOfWeek": "Wednesday"
+        }
+      ],
+      "sectionName": "1.1",
+      "lecturer": {
+        "reputation": "Dr.Öğr.",
+        "officeHours": [
+          {
+            "startTime": "14:00",
+            "endTime": "14:50",
+            "dayOfWeek": "Monday"
+          },
+          {
+            "startTime": "15:00",
+            "endTime": "15:50",
+            "dayOfWeek": "Monday"
+          }
+        ],
+        "salary": 10000,
+        "employmentStatus": "active",
+        "personName": "Betül",
+        "personSurname": "Boz",
+        "username": "betul",
+        "password": "boz"
+      },
+      "quota": 50,
+      "location": "M2-Z02",
+      "labHours": 0,
+      "shortName": "CSE1242",
+      "fullName": "Computer Programming II",
+      "description": "",
+      "semester": 2,
+      "credit": 6,
+      "classHours": 4
     }
   ],
   "technicalElectives": [
@@ -886,7 +914,6 @@
       ],
       "sectionName": "1.1",
       "lecturer": {
-        "courses": [],
         "reputation": "Doç. Dr.",
         "officeHours": [
           {
@@ -932,7 +959,6 @@
       ],
       "sectionName": "1.1",
       "lecturer": {
-        "courses": [],
         "reputation": "Doç. Dr.",
         "officeHours": [
           {
@@ -980,7 +1006,51 @@
       ],
       "sectionName": "1.1",
       "lecturer": {
-        "courses": [],
+        "reputation": "Doç. Dr.",
+        "officeHours": [
+          {
+            "startTime": "11:30",
+            "endTime": "12:20",
+            "dayOfWeek": "Monday"
+          },
+          {
+            "startTime": "13:00",
+            "endTime": "13:50",
+            "dayOfWeek": "Monday"
+          }
+        ],
+        "salary": 10000,
+        "employmentStatus": "active",
+        "personName": "Murat Can",
+        "personSurname": "Ganiz",
+        "username": "muratcan",
+        "password": "muratcanganiz"
+      },
+      "quota": 50,
+      "location": "M2-Z04",
+      "isRemote": true,
+      "shortName": "NTE1008",
+      "fullName": "Cinema",
+      "description": "",
+      "semester": 1,
+      "credit": 2,
+      "classHours": 2
+    },
+    {
+      "dates": [
+        {
+          "startTime": "10:30",
+          "endTime": "11:20",
+          "dayOfWeek": "Thursday"
+        },
+        {
+          "startTime": "11:30",
+          "endTime": "12:20",
+          "dayOfWeek": "Thursday"
+        }
+      ],
+      "sectionName": "1.1",
+      "lecturer": {
         "reputation": "Doç. Dr.",
         "officeHours": [
           {
@@ -1003,9 +1073,9 @@
       },
       "quota": 50,
       "location": "M2-Z04",
-      "isRemote": true,
-      "shortName": "NTE1008",
-      "fullName": "Cinema",
+      "isRemote": false,
+      "shortName": "YDA1001",
+      "fullName": "German for Beginners",
       "description": "",
       "semester": 1,
       "credit": 2,
@@ -1014,7 +1084,6 @@
   ],
   "lecturers": [
     {
-      "courses": [],
       "reputation": "Doç. Dr.",
       "officeHours": [
         {
@@ -1036,7 +1105,6 @@
       "password": "mustafaagaoglu"
     },
     {
-      "courses": [],
       "reputation": "Doç. Dr.",
       "officeHours": [
         {
@@ -1058,7 +1126,6 @@
       "password": "muratcanganiz"
     },
     {
-      "courses": [],
       "reputation": "Dr.Öğr.",
       "officeHours": [
         {
@@ -1086,7 +1153,7 @@
         {
           "address": "Maltepe/Istanbul",
           "phoneNumber": "5315274392",
-          "semester": 0,
+          "semester": 5,
           "entranceYear": 2020,
           "status": "",
           "selectedCourses": [],
@@ -1193,7 +1260,7 @@
               },
               {
                 "course": {
-                  "shortName": "CSE1241",
+                  "shortName": "CSE1242",
                   "fullName": "Computer Programming II",
                   "description": "",
                   "semester": 2,
@@ -1257,7 +1324,8 @@
                 },
                 "grade": "AA"
               }
-            ]
+            ],
+            "notes": ""
           },
           "personName": "Hakkı",
           "personSurname": "Kokur",
@@ -1267,7 +1335,7 @@
         {
           "address": "Kartal/Istanbul",
           "phoneNumber": "5312347654",
-          "semester": 0,
+          "semester": 5,
           "entranceYear": 2021,
           "status": "",
           "selectedCourses": [],
@@ -1374,7 +1442,7 @@
               },
               {
                 "course": {
-                  "shortName": "CSE1241",
+                  "shortName": "CSE1242",
                   "fullName": "Computer Programming II",
                   "description": "",
                   "semester": 2,
@@ -1438,7 +1506,8 @@
                 },
                 "grade": "AA"
               }
-            ]
+            ],
+            "notes": ""
           },
           "personName": "Burak",
           "personSurname": "Karayağlı",
@@ -1448,7 +1517,7 @@
         {
           "address": "Tuzla/Istanbul",
           "phoneNumber": "5345274592",
-          "semester": 0,
+          "semester": 5,
           "entranceYear": 2021,
           "status": "",
           "selectedCourses": [],
@@ -1555,7 +1624,7 @@
               },
               {
                 "course": {
-                  "shortName": "CSE1241",
+                  "shortName": "CSE1242",
                   "fullName": "Computer Programming II",
                   "description": "",
                   "semester": 2,
@@ -1619,7 +1688,8 @@
                 },
                 "grade": "AA"
               }
-            ]
+            ],
+            "notes": ""
           },
           "personName": "Barış Giray",
           "personSurname": "Akman",
@@ -1652,7 +1722,7 @@
         {
           "address": "Bostancı/Istanbul",
           "phoneNumber": "5365544592",
-          "semester": 0,
+          "semester": 5,
           "entranceYear": 2021,
           "status": "",
           "selectedCourses": [],
@@ -1759,7 +1829,7 @@
               },
               {
                 "course": {
-                  "shortName": "CSE1241",
+                  "shortName": "CSE1242",
                   "fullName": "Computer Programming II",
                   "description": "",
                   "semester": 2,
@@ -1823,7 +1893,8 @@
                 },
                 "grade": "AA"
               }
-            ]
+            ],
+            "notes": ""
           },
           "personName": "Efe",
           "personSurname": "Özgen",
@@ -1833,7 +1904,7 @@
         {
           "address": "Ataşehir/Istanbul",
           "phoneNumber": "5305244392",
-          "semester": 0,
+          "semester": 5,
           "entranceYear": 2021,
           "status": "",
           "selectedCourses": [],
@@ -1940,7 +2011,7 @@
               },
               {
                 "course": {
-                  "shortName": "CSE1241",
+                  "shortName": "CSE1242",
                   "fullName": "Computer Programming II",
                   "description": "",
                   "semester": 2,
@@ -2004,7 +2075,8 @@
                 },
                 "grade": "AA"
               }
-            ]
+            ],
+            "notes": ""
           },
           "personName": "Musa",
           "personSurname": "Özkan",
@@ -2014,7 +2086,7 @@
         {
           "address": "Üsküdar/Istanbul",
           "phoneNumber": "5375344792",
-          "semester": 0,
+          "semester": 5,
           "entranceYear": 2021,
           "status": "",
           "selectedCourses": [],
@@ -2121,7 +2193,7 @@
               },
               {
                 "course": {
-                  "shortName": "CSE1241",
+                  "shortName": "CSE1242",
                   "fullName": "Computer Programming II",
                   "description": "",
                   "semester": 2,
@@ -2185,7 +2257,8 @@
                 },
                 "grade": "AA"
               }
-            ]
+            ],
+            "notes": ""
           },
           "personName": "Tamer",
           "personSurname": "Unal",
