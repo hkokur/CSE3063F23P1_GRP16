@@ -5,36 +5,9 @@ public class Student extends Person {
     private String phoneNumber;
     private int semester;
     private int entranceYear;
-    private String status;
+    private String status; // waiting, approved, rejected, finished, available
     private ArrayList<Course> selectedCourses;
     private Transcript transcript;
-
-    public Student(String personName, String personSurname, String username, String password,
-            String address, String phoneNumber, int studentYear, int entranceYear, String status,
-            ArrayList<Course> selectedCourses,
-            Transcript transcript) {
-        super(personName, personSurname, username, password);
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.entranceYear = entranceYear;
-        this.selectedCourses = selectedCourses;
-        this.transcript = transcript;
-        this.status = status;
-    }
-
-    public Student(String personName, String personSurname, String username, String password) {
-
-    }
-
-    public Student() {
-
-    }
-
-    public void printTranscriptInfo() {
-        System.out.println("STUDENT TRANSCRIPT");
-        System.out.println("-------------------------------------------------");
-        System.out.println(transcript.getGrades());
-    }
 
     public String getAddress() {
         return this.address;
@@ -77,15 +50,7 @@ public class Student extends Person {
     }
 
     public ArrayList<Course> getSelectedCourses() {
-        return selectedCourses;
-    }
-
-    public void setCourses(ArrayList<Course> courses) {
-        this.selectedCourses = courses;
-    }
-
-    public String getFullName() {
-        return this.getPersonName() + " " + this.getPersonSurname();
+        return this.selectedCourses;
     }
 
     public void setSelectedCourses(ArrayList<Course> selectedCourses) {
@@ -100,73 +65,61 @@ public class Student extends Person {
         this.transcript = transcript;
     }
 
-    public boolean addCourse(Course course){
-        return this.selectedCourses.add(course);
-
+    public Student(String name, String surname, String id, String password, String address, String phoneNumber,
+            int semester, int entranceYear, String status, ArrayList<Course> selectedCourses, Transcript transcript) {
+        super(name, surname, id, password);
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.semester = semester;
+        this.entranceYear = entranceYear;
+        this.status = status;
+        this.selectedCourses = selectedCourses;
+        this.transcript = transcript;
     }
 
-    // Function for checking if the student has already added the course.
-    public boolean checkStudentAlreadyAddedTheCourse(Course course) {
-        ArrayList<Course> courses = this.getSelectedCourses();
-        for (int i = 0; i < courses.size(); i++) {
-            if (courses.get(i).getShortName().equals(course.getShortName())) {
-                return true;
-            }
-        }
-        return false;
+    public Student() {
+        super();
+        this.address = "";
+        this.phoneNumber = "";
+        this.semester = 0;
+        this.entranceYear = 0;
+        this.status = "";
+        this.selectedCourses = new ArrayList<Course>();
+        this.transcript = new Transcript();
     }
 
-
-    // Function for checking if the student's year is suitable for the course.
-    public boolean checkYear(Course course) {
-
-        String courseShortName = course.getShortName();
-        int courseYear = parseYearFromShortName(courseShortName);
-
-        // If the student's year is suitable for the course, return true.
-        // If the student's year is not suitable for the course, return false.
-        if (this.getEntranceYear() >= courseYear) {
+    // Adding a course to the selected courses of the student
+    public boolean addCourse(Course course) {
+        try {
+            selectedCourses.add(course);
             return true;
-        } else {
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            return false;
+        }
+
+    }
+
+    public boolean dropCourse(Course course) {
+        try {
+            selectedCourses.remove(course);
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
             return false;
         }
     }
 
-    // Function for parsing the year from the course short name.
-    public int parseYearFromShortName(String courseShortName) {
-        // Find first number in string
-        int i = 0;
-        while (!Character.isDigit(courseShortName.charAt(i))) {
-            i++;
-        }
-        // Return courseShortName.charAt(i) as an int
-        return Character.getNumericValue(courseShortName.charAt(i));
-    }
-
-    public boolean isUntaken(Course course) {
-        ArrayList<Grade> studentCoursesTaken = this.getTranscript().getGradeList();
-
-        for(int i = 0;i<studentCoursesTaken.size();i++){
-            if(studentCoursesTaken.get(i).getCourse().getFullName().equals(course.getFullName()))
-                return false;
-        }           
-       
-        return true;
-    }
-
     public ArrayList<Course> getAvailableCourses() {
         ArrayList<Course> availableCourses = new ArrayList<Course>();
-        Json json = new Json();
-        ArrayList<Course> courses = json.readCourses();
-        // From the course section list
-        for (int i = 0; i < courses.size(); i++) {
-            Course course = courses.get(i);
-            if (!checkStudentAlreadyAddedTheCourse(course)
-                    && checkPrerequisite(course)
-                    && checkYear(course) && isUntaken(course)) {
+
+        ArrayList<Course> allCourse = getAllCourses();
+        for (Course course : allCourse) {
+            if (studentCanTakeCourse(course)) {
                 availableCourses.add(course);
             }
         }
+
         return availableCourses;
     }
 
@@ -219,23 +172,7 @@ public class Student extends Person {
 
         return warningString;
     }
-    public int getTotalCredit(){
-        int sum = 0;
-        for(int i = 0;i<selectedCourses.size();i++){
-            sum+=selectedCourses.get(i).getCredit();
-        }
-        return sum;
-    }  
 
-    public boolean dropCourse(Course course){
-        for(int i = 0;i<this.getSelectedCourses().size();i++){
-            if(this.getSelectedCourses().get(i).getShortName().equals(course.getShortName())){
-                this.getSelectedCourses().remove(course);
-                return true;
-            }
-        }
-        return false;
-    }
     private int getTotalCreditOfSelectedCourses() {
         int totalCredit = 0;
 
@@ -265,9 +202,9 @@ public class Student extends Person {
                 return true;
             }
         }
+
         return false;
     }
-
 
     // Returns true if the student passed the prerequisite courses
     public boolean checkPrerequisite(Course course) {

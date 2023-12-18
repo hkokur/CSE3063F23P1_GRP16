@@ -36,7 +36,7 @@ public class Menu {
         } else if (systemController.getLoggedInUser() instanceof Advisor) {
             advisorMenu();
         } else if (systemController.getLoggedInUser() instanceof Lecturer) {
-            //lecturerMenu();
+            lecturerMenu();
         }
 
     }
@@ -48,20 +48,11 @@ public class Menu {
         Student student = (Student) systemController.getLoggedInUser();
         if (selection == 1) {
             System.out.println("AVAILABLE COURSES THAT STUDENT CAN TAKE");
-            ArrayList<Course> availableCourses = student.getAvailableCourses();
+            ArrayList<CourseSection> availableCourses = systemController.getAvailableCourses(student);
             for (int i = 0; i < availableCourses.size(); i++) {
-                Course course = availableCourses.get(i);
-                if(course instanceof NonTechnicalElectiveCourse)
-                    System.out.println(i + 1 + ". " + course.getFullName() + " " + ((NonTechnicalElectiveCourse)course).getSectionName()
-                            + " " + course.getShortName());
-                
-                else if(course instanceof TechnicalElectiveCourse)
-                    System.out.println(i + 1 + ". " + course.getFullName() + " " + ((TechnicalElectiveCourse)course).getSectionName()
-                            + " " + course.getShortName());
-                
-                else if(course instanceof MandatoryCourse)
-                    System.out.println(i + 1 + ". " + course.getFullName() + " " + ((MandatoryCourse)course).getSectionName()
-                            + " " + course.getShortName());
+                CourseSection courseSection = availableCourses.get(i);
+                System.out.println(i + 1 + ". " + courseSection.getFullName() + " " + courseSection.getSectionName()
+                        + " " + courseSection.getShortName());
             }
 
             Scanner input = new Scanner(System.in);
@@ -79,7 +70,6 @@ public class Menu {
                     System.out.println(StringConstants.INVALID_OPTION_MESSAGE);
                 }
             }
-            input.close();
 
         } else if (selection == 2) {
             student.printTranscriptInfo();
@@ -88,24 +78,12 @@ public class Menu {
         }
 
         else if (selection == 4) {
-            ArrayList<Course> coursesTaken = student.getSelectedCourses();
+            ArrayList<CourseSection> coursesTaken = student.getCourses();
 
             for (int i = 0; i < coursesTaken.size(); i++) {
                 System.out.println(coursesTaken.get(i).getShortName() + " " + coursesTaken.get(i).getFullName() + " "
                         + coursesTaken.get(i).getShortName());
             }
-        }
-        else if(selection == 5){
-            ArrayList<Course> coursesTaken = student.getSelectedCourses();
-            System.out.println("Please select one of the courses you want to discard.");
-            for (int i = 0; i < coursesTaken.size(); i++) {
-                System.out.println((i+1)+" "+coursesTaken.get(i).getShortName() + " " + coursesTaken.get(i).getFullName() + " "
-                        + coursesTaken.get(i).getShortName());
-            }
-            int num = 0;
-            Scanner input = new Scanner(System.in);
-            num = input.nextInt();
-            coursesTaken.remove(num-1);
         }
 
         if (systemController.getLoggedInUser() == null) {
@@ -133,20 +111,13 @@ public class Menu {
             System.out.println(
                     "List of courses for student " + advisor.getStudents().get(studentSelection - 1).getFullName());
 
-            ArrayList<Course> coursesOfStudent = advisor.getStudents().get(studentSelection - 1).getSelectedCourses();
+            ArrayList<CourseSection> coursesOfStudent = advisor.getStudents().get(studentSelection - 1)
+                    .getCourses();
             for (int i = 0; i < coursesOfStudent.size(); i++) {
-                Course course = coursesOfStudent.get(i);
-                if(course instanceof NonTechnicalElectiveCourse)
-                    System.out.println(i + 1 + ". " + course.getFullName() + " " + ((NonTechnicalElectiveCourse)course).getSectionName()
-                            + " " + course.getShortName());
-                
-                else if(course instanceof TechnicalElectiveCourse)
-                    System.out.println(i + 1 + ". " + course.getFullName() + " " + ((TechnicalElectiveCourse)course).getSectionName()
-                            + " " + course.getShortName());
-                
-                else
-                    System.out.println(i + 1 + ". " + course.getFullName() + " " + ((MandatoryCourse)course).getSectionName()
-                            + " " + course.getShortName());
+                CourseSection courseSection = coursesOfStudent.get(i);
+                System.out.println(courseSection.getFullName() + " " +
+                        courseSection.getSectionName()
+                        + " " + courseSection.getShortName());
             }
 
             System.out.println("1-Approve selections\n2-Reject selections");
@@ -184,7 +155,7 @@ public class Menu {
         }
 
     }
-    /* 
+
     public void lecturerMenu() {
 
         System.out.println(systemController.getMenu());
@@ -216,6 +187,5 @@ public class Menu {
         }
 
     }
-    */
 
 }

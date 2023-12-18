@@ -4,7 +4,7 @@ public class Course {
     private String shortName;
     private String fullName;
     private String description;
-    private ArrayList<String> prerequisite = new ArrayList<String>();
+    private ArrayList<String> prerequisite;
     private int semester;
     private int credit;
     private int classHours;
@@ -14,9 +14,7 @@ public class Course {
         this.shortName = shortName;
         this.fullName = fullName;
         this.description = description;
-        if(prerequisite!=null){
-            this.prerequisite = prerequisite;
-        }
+        this.prerequisite = prerequisite;
         this.semester = semester;
         this.credit = credit;
         this.classHours = classHours;
@@ -47,7 +45,7 @@ public class Course {
     }
 
     public ArrayList<String> getPrerequisite() {
-        return this.prerequisite;
+        return prerequisite;
     }
 
     public void setPrerequisite(ArrayList<String> prerequist) {
@@ -103,5 +101,4 @@ public class Course {
                 + "\nCredit: " + this.credit + "\nClass Hours: " + this.classHours;
     };
 
-    // public abstract String getInfo();
 }
