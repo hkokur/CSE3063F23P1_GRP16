@@ -1,0 +1,38 @@
+2023-12-20 15:04:07 INFO  Menu:62 - Login menu displayed
+2023-12-20 15:04:13 INFO  Menu:74 - User fatmacorut logged in successfully
+2023-12-20 15:04:58 INFO  Menu:62 - Login menu displayed
+2023-12-20 15:05:01 WARN  Menu:77 - User barisgiray failed to log in with username barisgiray and password barisgirayakamn
+2023-12-20 15:05:01 INFO  Menu:62 - Login menu displayed
+2023-12-20 15:05:05 INFO  Menu:74 - User barisgiray logged in successfully
+2023-12-20 15:05:05 INFO  StudentMenu:28 - Student menu displayed
+2023-12-20 15:05:06 INFO  StudentMenu:116 - Selected courses displayed
+2023-12-20 15:05:08 INFO  StudentMenu:74 - Course adding menu displayed
+2023-12-20 15:05:08 INFO  StudentMenu:131 - Available courses displayed
+2023-12-20 15:05:09 INFO  StudentController:28 - Course added: CSE3033 to student:Barış Giray
+2023-12-20 15:05:09 INFO  StudentController:28 - Course added: CSE3055 to student:Barış Giray
+2023-12-20 15:05:09 INFO  StudentController:28 - Course added: CSE3063 to student:Barış Giray
+2023-12-20 15:05:11 INFO  StudentMenu:116 - Selected courses displayed
+2023-12-20 15:05:14 INFO  Menu:62 - Login menu displayed
+2023-12-20 15:05:17 INFO  Menu:74 - User fatmacorut logged in successfully
+2023-12-20 15:06:55 INFO  Menu:62 - Login menu displayed
+2023-12-20 15:06:58 INFO  Menu:74 - User barisgiray logged in successfully
+2023-12-20 15:06:58 INFO  StudentMenu:28 - Student menu displayed
+2023-12-20 15:06:59 INFO  StudentMenu:146 - Transcript displayed
+2023-12-20 15:07:19 INFO  Menu:62 - Login menu displayed
+2023-12-20 15:07:22 INFO  Menu:74 - User barisgiray logged in successfully
+2023-12-20 15:07:22 INFO  StudentMenu:28 - Student menu displayed
+2023-12-20 15:07:24 INFO  StudentMenu:116 - Selected courses displayed
+2023-12-20 15:07:25 INFO  StudentMenu:116 - Selected courses displayed
+2023-12-20 15:07:29 INFO  StudentMenu:95 - Course dropping menu displayed
+2023-12-20 15:07:29 INFO  StudentMenu:116 - Selected courses displayed
+2023-12-20 15:07:31 INFO  StudentController:39 - Course dropped: CSE3063 from student:Barış Giray
+2023-12-20 15:07:31 INFO  StudentController:39 - Course dropped: CSE3055 from student:Barış Giray
+2023-12-20 15:07:31 INFO  StudentController:39 - Course dropped: CSE3033 from student:Barış Giray
+2023-12-20 15:07:33 INFO  StudentMenu:116 - Selected courses displayed
+2023-12-20 15:07:37 INFO  Menu:62 - Login menu displayed
+2023-12-20 15:07:41 INFO  Menu:74 - User fatmacorut logged in successfully
+2023-12-20 15:08:33 INFO  Menu:62 - Login menu displayed
+2023-12-20 15:08:37 INFO  Menu:74 - User fatmacorut logged in successfully
+2023-12-20 15:08:39 INFO  Menu:62 - Login menu displayed
+2023-12-20 15:09:12 INFO  Menu:62 - Login menu displayed
+2023-12-20 15:09:18 INFO  Menu:74 - User fatmacorut logged in successfully
