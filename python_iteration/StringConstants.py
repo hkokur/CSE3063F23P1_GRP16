@@ -1,0 +1,15 @@
+class StringConstants:
+    def __init__(self):
+        self.WELCOME_MESSAGE = "Welcome to the Course Management System!"
+        self.LOGIN_MESSAGE = "Please enter your username and password to login."
+        self.USERNAME_MESSAGE = "Username: "
+        self.PASSWORD_MESSAGE = "Password: "
+        self.LOGIN_SUCCESSFUL_MESSAGE = "Login successful!"
+        self.LOGIN_UNSUCCESSFUL_MESSAGE = "Login unsuccessful!\n"
+        self.STUDENT_MENU_MESSAGE = "Please select an option from the menu below."
+        self.STUDENT_MENU_OPTIONS = "1. Select Courses\n2. View Transcript\n3. Logout\n4. View Courses Student is taking"
+        self.LECTURER_MENU_MESSAGE = "Please select an option from the menu below."
+        self.LECTURER_MENU_OPTIONS = "1. Create New Course\n2. Logout"
+        self.ADVISOR_MENU_MESSAGE = "Please select an option from the menu below."
+        self.ADVISOR_MENU_OPTIONS = "1. Approve/Reject Courses\n2. View Students Transcripts\n3. Logout"
+        self.INVALID_OPTION_MESSAGE = "Invalid option! Please try again."
