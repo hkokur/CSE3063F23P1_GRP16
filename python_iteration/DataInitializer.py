@@ -9,7 +9,16 @@ class DataInitializer:
         self.lecturers = []
         self.parameters = []
         self.courses = []
+        self.course_sections = []
         self.read_all()
+
+
+    
+    def find_course(self, shortName: str):
+        for i in range(len(courses)):
+            if self.courses[i]["shortName"] == shortName:
+                return courses[i]
+
     def read_students(self):
         import json
         directory = os.getcwd() + "/database"  # Use "/" instead of "\"
@@ -25,7 +34,7 @@ class DataInitializer:
             grades = []
             for j in range(len(self.students[i]["transcript"]["listGrades"])):
                 course_info = self.students[i]["transcript"]["listGrades"][j]
-                course = find_course(course_info["shortName"])
+                course = self.find_course(course_info["course"]["shortName"])
                 grade = Grade(course, course_info["grade"])
                 grades.append(grade)
             transcript = Transcript(grades, "")
@@ -34,10 +43,6 @@ class DataInitializer:
             self.students[i] = student
 
 
-    def find_course(self, shortName: str):
-        for i in range(len(courses)):
-            if courses[i]["shortName"] == shortName:
-                return courses[i]
 
 
     def find_student(self, personName: str):
@@ -63,10 +68,10 @@ class DataInitializer:
         self.advisors = self.parameters[0]["advisors"]
         for i in range(len(self.advisors)):
             advisor_students = []
-            time_intervals = []
+            intervals = []
             for j in range(len(self.advisors[i]["officeHours"])):
                 office_hours = self.advisors[i]["officeHours"][j]
-                time_interval = TimeInterval(office_hours["startTime"], office_hours["endTime"], office_hours["dayOfWeek"])
+                time_interval = TimeInterval(officetime__hours["startTime"], office_hours["endTime"], office_hours["dayOfWeek"])
                 time_intervals.append(time_interval)
             
             for j in range(len(self.advisors[i]["students"])):
@@ -87,21 +92,62 @@ class DataInitializer:
                 office_hours = self.advisors[i]["officeHours"][j]
                 time_interval = TimeInterval(office_hours["startTime"], office_hours["endTime"], office_hours["dayOfWeek"])
                 time_intervals.append(time_interval)
-            
             for j in range(len(self.lecturers[i]["courses"])):
                 course_name = self.lecturers[i]["courses"][j]["shortName"]
-                course = find_course(course_name)
+                course = self.find_course(course_name)
                 courses.append(course)
             lecturer = Lecturer(self.lecturers[i]["personName"], self.lecturers[i]["personSurname"], self.lecturers[i]["username"],
                 self.lecturers[i]["password"], self.lecturers[i]["reputation"], office_hours, self.lecturers[i]["salary"], 
                 self.lecturers[i]["employmentStatus"])
             self.lecturers[i] = lecturer
     
+
     def read_courses(self):
         self.courses = self.parameters[0]["courses"]
+        for i in range(len(self.courses)):
+            prerequisite = []
+            for j in range(len(self.courses[i]["prerequisite"])):
+                prerequisite.append(self.courses[i]["prerequisite"][j])
+            course = Course(self.courses[i]["shortName"], self.courses[i]["fullName"], self.courses[i]["description"], prerequisite,
+            int(self.courses[i]["semester"]), int(self.courses[i]["credit"]))
+            self.courses[i] = course
+
+    
+    def read_courses(self):
+        self.courses = self.parameters[0]["courses"]
+        for i in range(len(self.courses)):
+            prerequisite = []
+            for j in range(len(self.courses[i]["prerequisite"])):
+                prerequisite.append(self.courses[i]["prerequisite"][j])
+            course = Course(self.courses[i]["shortName"], self.courses[i]["fullName"], self.courses[i]["description"], prerequisite,
+            int(self.courses[i]["semester"]), int(self.courses[i]["credit"]))
+            self.courses[i] = course
+    
+
+    def find_lecturer(self, person_name):
+        for i in range(len(self.lecturers)):
+            if self.lecturers[i]["personName"]==person_name
+                return self.lecturers[i]
+
+    def read_course_sections(self):
+        self.course_sections = self.parameters[0]["courseSections"]
+        time_intervals = []
+        for i in range(len(self.course_sections)):
+            course = find_course(self.course_sections[i]["shortName"])
+            for j in range(len(self.course_sections[i]["dates"])):
+                dates = self.course_sections[i]["dates"][j]
+                time_interval = TimeInterval(dates["startTime"], dates["endTime"], dates["dayOfWeek"])
+                time_intervals.append(time_interval)
+            lecturer = find_lecturer(self.course_sections[i]["lecturer"]["personName"])
+            course_section = CourseSection(course, time_intervals, self.course_sections[i]["sectionName"], lecturer, int(self.course_sections[i]["quota"]),
+            int(self.course_sections[i]["numberOfStudent"]), int(self.course_sections[i]["requiredCredit"]), self.course_sections[i]["type"])
+            self.course_sections[i] = course_section
+
 
     def read_all(self):
         self.read_parameters()
+        self.read_courses()
+        self.read_course_sections()
         self.read_students()
         self.read_advisors()
         self.read_lecturers()
@@ -109,7 +155,7 @@ class DataInitializer:
 
 datainit = DataInitializer()
 
-print(datainit.students[0])
+print(datainit.advisors)
 
 
 
