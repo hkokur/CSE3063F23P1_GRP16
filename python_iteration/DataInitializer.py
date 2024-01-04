@@ -126,7 +126,7 @@ class DataInitializer:
 
     def find_lecturer(self, person_name):
         for i in range(len(self.lecturers)):
-            if self.lecturers[i]["personName"]==person_name
+            if self.lecturers[i]["personName"]==person_name:
                 return self.lecturers[i]
 
     def read_course_sections(self):
